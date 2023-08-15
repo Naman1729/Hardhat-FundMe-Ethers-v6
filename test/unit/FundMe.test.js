@@ -4,16 +4,16 @@ const { developmentChains } = require("../../help-hardhat-config");
 
 !developmentChains.includes(network.name)
   ? describe.skip
-  : describe("FundMe", async function () {
+  : describe("FundMe", function () {
       let fundMe;
       let deployer;
       let mockV3Aggregator;
-      const sendValue = ethers.utils.parseEther("1");
+      const sendValue = ethers.parseEther("1");
       beforeEach(async function () {
         deployer = (await getNamedAccounts()).deployer;
         await deployments.fixture(["all"]);
-        fundMe = await ethers.getContract("FundMe", deployer);
-        mockV3Aggregator = await ethers.getContract(
+        fundMe = await ethers.getContractAt("FundMe", deployer);
+        mockV3Aggregator = await ethers.getContractAt(
           "MockV3Aggregator",
           deployer
         );

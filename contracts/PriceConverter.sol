@@ -9,7 +9,7 @@ library PriceConverter {
         return uint256(price * 1e10);
     }
 
-    function getconversionRate(uint256 amount, AggregatorV3Interface priceFeed) external view returns (uint256) {
+    function getconversionRate(uint256 amount, AggregatorV3Interface priceFeed) internal view returns (uint256) {
         uint256 ethprice = getPrice(priceFeed);
         uint256 ethAmountInUsd = amount * ethprice / 1e18;
         return ethAmountInUsd;
