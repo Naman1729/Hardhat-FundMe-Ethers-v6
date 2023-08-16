@@ -191,4 +191,11 @@ const { developmentChains } = require("../../help-hardhat-config");
           }
         });
       });
+
+      describe("Checking getOwner", () => {
+        it("Should return the owner", async () => {
+          const owner = await fundMe.getOwner();
+          assert.equal(owner, deployer);
+        });
+      });
     });
